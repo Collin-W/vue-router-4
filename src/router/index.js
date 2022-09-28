@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 // the .vue is needed for vite
-import Home from '@/views/Home.vue'
-import About from '@/views/About.vue'
-import Brazil from '@/views/Brazil.vue'
-import Jamaica from '@/views/Jamaica.vue'
-import Hawaii from '@/views/Hawaii.vue'
+import Home from '../views/Home.vue'
+import About from '../views/About.vue'
+import Brazil from '../views/Brazil.vue'
+import Jamaica from '../views/Jamaica.vue'
+import Hawaii from '../views/Hawaii.vue'
 
 const  routes = [
     {

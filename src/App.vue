@@ -17,9 +17,8 @@ router-link for intrenal links and a tag for external links-->
   
   ao depending on your url that comp linked will render-->
 
-      <router-veiw></router-veiw>
+      <router-view></router-view>
     </div>
   </div>
 </template>
 
-<script></script>
