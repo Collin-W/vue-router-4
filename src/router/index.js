@@ -1,44 +1,52 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 // the .vue is needed for vite
-import Home from '../views/Home.vue'
-import About from '../views/About.vue'
-import Brazil from '../views/Brazil.vue'
-import Jamaica from '../views/Jamaica.vue'
-import Hawaii from '../views/Hawaii.vue'
+import Home from "../views/Home.vue";
 
-const  routes = [
-    {
-      path: "/",
-      name: "Home",
-      component: Home,
-    },
-    {
-      path: "/about",
-      name: "About",
-      component: About,
-    },
-    {
-      path: "/brazil",
-      name: "Brazil",
-      component: Brazil,
-    },
-    {
-      path: "/jamaica",
-      name: "Jamaica",
-      component: Jamaica,
-    },
-    {
-      path: "/hawaii",
-      name: "Hawaii",
-      component: Hawaii,
-    },
-  ]
+const routes = [
+  {
+    path: "/",
+    name: "Home",
+    component: Home,
+  },
+  // {
+  //   path: "/brazil",
+  //   name: "Brazil",
+  //   component: () => import("../views/Brazil.vue"),
+  // },
+  // {
+  //   path: "/jamaica",
+  //   name: "Jamaica",
+  //   component: () => import("../views/Jamaica.vue"),
+  // },
+  // {
+  //   path: "/hawaii",
+  //   name: "Hawaii",
+  //   component: () => import("../views/Hawaii.vue"),
+  // },
+  {
+    path: "/destination/:id/:slug",
+    name: "destination.show",
+    component: () => import("../views/DestinationShow.vue"),
+    props: (route) => ({ ...route.params, id: parseInt(route.params.id) }),
+    children: [
+      {
+        path: ":experienceSlug",
+        name: "experience.show",
+        component: () => import("../views/ExperienceShow.vue"),
+        props: (route) => ({ ...route.params, id: parseInt(route.params.id) }),
+      },
+    ]
+  },
+ 
+];
 
 const router = createRouter({
   history: createWebHistory(),
   // below is an array of obj for route records
-  routes
+  routes,
+  // good to know that the router will automatically add semantic classes
+  linkActiveClass: "vue-router-active-link",
 });
 
-export default router
+export default router;
